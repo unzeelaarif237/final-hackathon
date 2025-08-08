@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-const HijabStyle = require('./models/HijabStyle.js');
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import HijabStyle from './models/HijabStyle.js';
 
 dotenv.config();
 
@@ -45,7 +45,7 @@ const seedHijabs = [
 
 const seedDatabase = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URI);
+    await mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/hijab-gallery');
     console.log('Connected to MongoDB');
     
     // Clear existing data
