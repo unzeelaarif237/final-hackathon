@@ -1,16 +1,13 @@
 import express from 'express';
-import {
-  signup,
-  login,
-  resetPassword,
-  updateEmail
-} from '../controllers/authController.js'; // ✅ CORRECT
+import { signup, login, getProfile } from '../controllers/authController.js';
+import { protect } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
 router.post('/signup', signup);
 router.post('/login', login);
-router.post('/reset-password', resetPassword);
-router.post('/update-email', updateEmail);
+router.get('/profile', protect, getProfile);
+
 
 export default router;
+
